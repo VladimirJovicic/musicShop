@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -39,7 +40,7 @@ public class SubCategory implements Serializable{
     @Column(unique = true, nullable = false)
     private Long id;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String name;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -47,16 +48,18 @@ public class SubCategory implements Serializable{
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private Category category;
-	
+
+	@Size(min = 0)
 	@OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "subCategory")
-    private Set<ArticleCategory> articleCategories = new HashSet<ArticleCategory>(0);
-	
+    private Set<ArticleCategory> articleCategories = new HashSet<ArticleCategory>();
+
+	@Size(min = 0)
 	@OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "subCategory")
-    private Set<Article> articles = new HashSet<Article>(0);
+    private Set<Article> articles = new HashSet<Article>();
 	
 	public SubCategory(){}
 

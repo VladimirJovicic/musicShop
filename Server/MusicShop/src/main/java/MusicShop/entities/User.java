@@ -39,7 +39,7 @@ public class User implements Serializable{
 	private String email;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "article_id", nullable = false)
+    @JoinColumn(name = "role_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private Role role;

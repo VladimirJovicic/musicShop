@@ -3,11 +3,13 @@ package MusicShop.services.servicesImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import MusicShop.entities.User;
 import MusicShop.repositories.UserRepository;
 import MusicShop.services.UserService;
 
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired

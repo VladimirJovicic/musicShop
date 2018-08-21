@@ -35,29 +35,29 @@ public class Article implements Serializable{
     @Column(unique = true, nullable = false)
     private Long id;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "category_id", nullable = true, unique = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private Category category;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "user_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private User userCart;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "sub_category_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "sub_category_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private SubCategory subCategory;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "article_category_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "article_category_id", nullable = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
 	private ArticleCategory articleCategory;
@@ -126,6 +126,19 @@ public class Article implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+	public ArticleCategory getArticleCategory() {
+		return articleCategory;
+	}
+
+
+
+	public void setArticleCategory(ArticleCategory articleCategory) {
+		this.articleCategory = articleCategory;
+	}
+	
 	
 	
 
