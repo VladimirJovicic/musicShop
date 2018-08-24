@@ -38,6 +38,9 @@ public class Article implements Serializable{
 	@Column(nullable = false)
 	private String name;
 	
+	@Column(nullable = false)
+	private int price;
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "category_id", nullable = true, unique = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -137,6 +140,18 @@ public class Article implements Serializable{
 
 	public void setArticleCategory(ArticleCategory articleCategory) {
 		this.articleCategory = articleCategory;
+	}
+
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	
