@@ -1,3 +1,13 @@
-<p>
-  registration works!
-</p>
+<div style="margin-left: 35%;">
+  <div class="form-group" style="width: 50%;">
+    <label>Korisničko ime</label>
+    <input type="text" class="form-control" placeholder="Korisničko ime" [(ngModel)]="newUser.username"><br>
+    <label>Email adresa</label>
+    <input type="text" class="form-control" placeholder="Email adresa" [(ngModel)]="newUser.email"><br>
+    <label>Šifra</label>
+    <input type="password" class="form-control" placeholder="Šifra" [(ngModel)]="newUser.password"><br>
+    <label>Ponovi šifru</label>
+    <input type="password" class="form-control" placeholder="Ponovi šifru" [(ngModel)]="newUser.repeatPassword"><br>
+    <button class="btn btn-primary"style="margin-left: 35%;" (click)="register()">Registruj se</button>
+  </div>
+</div>

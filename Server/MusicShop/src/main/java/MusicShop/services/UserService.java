@@ -10,5 +10,6 @@ public interface UserService {
 	User findOne(Long id);
 	Optional<User> findByUsername(String username);
 	Optional<User> findById(Long id);
+	public User save(User user);
 
 }

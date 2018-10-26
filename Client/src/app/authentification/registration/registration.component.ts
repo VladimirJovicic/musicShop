@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthentificationService} from './../authentification.service'
 
 @Component({
   selector: 'app-registration',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  newUser: any = {};
+
+  constructor(private service:AuthentificationService) { }
 
   ngOnInit() {
+  }
+
+  register(){
+    if(this.newUser.password !== this.newUser.repeatPassword){
+      alert("Sifre se ne poklapaju!")
+    }else {
+    this.service.register(this.newUser).subscribe(
+      (data:any)=>{
+        alert("Uspesno je dodat korisnik");
+      },error=>{
+        alert(error.error);
+      }
+    );
+  }
   }
 
 }

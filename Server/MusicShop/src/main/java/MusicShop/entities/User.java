@@ -1,6 +1,7 @@
 package MusicShop.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,6 +39,9 @@ public class User implements Serializable{
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	@Column(nullable = false)
+	private boolean activated;
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "role_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -48,6 +52,9 @@ public class User implements Serializable{
             fetch = FetchType.LAZY,
             mappedBy = "userCart")
     private Set<Article> cart = new HashSet<Article>(0);
+	
+	@Column(nullable = true)
+    private Date lastPasswordReset;
 
 	
 	public Role getRole() {
@@ -116,8 +123,21 @@ public class User implements Serializable{
 		return serialVersionUID;
 	}
 
+	public boolean isActivated() {
+		return activated;
+	}
 
+	public void setActivated(boolean activated) {
+		this.activated = activated;
+	}
+
+	public Date getLastPasswordReset() {
+		return lastPasswordReset;
+	}
+
+	public void setLastPasswordReset(Date lastPasswordReset) {
+		this.lastPasswordReset = lastPasswordReset;
+	}	
 	
 	
-
 }
